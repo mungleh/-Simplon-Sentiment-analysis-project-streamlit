@@ -21,9 +21,19 @@ headers = {
 data = {"review": "nothing"}
 user_input = st.text_input("Entrez la phrase que vous voulez analysez")
 data["review"] = user_input
-data = f'{data}'
-st.write(data)
-btn = st.button("test")
-if btn:
-    response = requests.get('https://matdreamteam.azurewebsites.net/predict', headers=headers, data = data)
-    st.write(response.text)
+
+st.text(data)
+btn_pred = st.button("Prediction")
+btn_del = st.button("Delete")
+if btn_pred:
+    response = requests.get('https://matdreamteam.azurewebsites.net/predict',
+                            headers=headers, json=data)
+    dict_data = response.json()
+    dict_data["input"] = user_input
+    st.write(dict_data)
+    add = requests.post('https://matdreamteam.azurewebsites.net/add', 
+                        headers= headers, json = dict_data)
+   
+if btn_del :
+   delete = requests.post('https://matdreamteam.azurewebsites.net/del', 
+                        headers= headers)
