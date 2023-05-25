@@ -21,7 +21,7 @@ headers = {
 data = {"review": "nothing"}
 user_input = st.text_input("Entrez la phrase que vous voulez analysez")
 data["review"] = user_input
-st.write(user_input)
+st.write(data)
 btn = st.button("test")
 if btn:
     response = requests.get('https://matdreamteam.azurewebsites.net/predict', headers=headers, data=f'{data}')
