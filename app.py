@@ -24,5 +24,5 @@ data["review"] = user_input
 st.write(user_input)
 btn = st.button("test")
 if btn:
-    response = requests.get('http://127.0.0.1:8000/predict', headers=headers, data=f'{data}')
+    response = requests.get('https://matdreamteam.azurewebsites.net/predict', headers=headers, data=f'{data}')
     st.write(response.text)
