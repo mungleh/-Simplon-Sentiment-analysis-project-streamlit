@@ -18,7 +18,7 @@ headers = {
    'Content-Type': 'application/json',
 }
 
-data = {"review": "nothing"}
+data = {"review": "nothing", "input" : "nothing", "istrue":"nothing"}
 user_input = st.text_input("Entrez la phrase que vous voulez analysez")
 data["review"] = user_input
 
