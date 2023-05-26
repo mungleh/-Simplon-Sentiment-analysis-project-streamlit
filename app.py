@@ -37,12 +37,13 @@ if btn_pred:
     
 if btn_true :
    dict_data["istrue"] = 1
-   add = requests.post('https://matdreamteam.azurewebsites.net/add', 
+   requests.post('https://matdreamteam.azurewebsites.net/add', 
                         headers= headers, json = dict_data)
 
 if btn_false :
    dict_data["istrue"] = 0
-   add
+   requests.post('https://matdreamteam.azurewebsites.net/add', 
+                        headers= headers, json = dict_data)
    
 if btn_del :
    delete = requests.post('https://matdreamteam.azurewebsites.net/del', 
