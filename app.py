@@ -18,30 +18,35 @@ headers = {
    'Content-Type': 'application/json',
 }
 
-data = {"review": "nothing", "input" : "nothing", "istrue":"nothing"}
+if 'data' not in st.session_state:
+    st.session_state['data'] = {"review": "nothing", "input" : "nothing", "istrue":"nothing"}
+    
+    
+data = {"review": "nothing"}
 user_input = st.text_input("Entrez la phrase que vous voulez analysez")
 data["review"] = user_input
 
-st.text(data)
 btn_pred = st.button("Prediction")
 btn_del = st.button("Delete")
 btn_true = st.button("True")
 btn_false =  st.button("False")
 
+
+
 if btn_pred:
    response = requests.get('https://matdreamteam.azurewebsites.net/predict',
                            headers=headers, json=data)
-   dict_data = response.json()
-   dict_data["input"] = user_input
-   st.write(dict_data)
+   st.session_state.data = response.json()
+   st.session_state.data["input"] = user_input
+   st.write(st.session_state.data)
     
 if btn_true :
-   dict_data["istrue"] = 1
+   st.session_state.data["istrue"] = 1
    add = requests.post('https://matdreamteam.azurewebsites.net/add', 
-                        headers= headers, json = dict_data)
+                        headers= headers, json = st.session_state.data)
 
 if btn_false :
-   dict_data["istrue"] = 0
+   st.session_state.data["istrue"] = 0
    add
    
 if btn_del :
