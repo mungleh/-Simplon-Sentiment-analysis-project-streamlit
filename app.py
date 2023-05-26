@@ -54,3 +54,14 @@ if btn_false :
 if btn_del :
    delete = requests.post('https://matdreamteam.azurewebsites.net/del', 
                         headers= headers)
+   
+df = pd.DataFrame(requests.get('https://matdreamteam.azurewebsites.net',
+                           headers=headers).json())
+
+try :
+   stat = np.round(df["istrue"].value_counts()[1] / df["istrue"].value_counts()[0]*100, 2)
+
+   st.write(df)
+   st.write(f"Your model is good {stat}% of the time")
+except :
+   pass
