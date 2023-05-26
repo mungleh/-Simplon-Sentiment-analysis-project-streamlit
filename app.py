@@ -25,14 +25,24 @@ data["review"] = user_input
 st.text(data)
 btn_pred = st.button("Prediction")
 btn_del = st.button("Delete")
+btn_true = st.button("True")
+btn_false =  st.button("False")
+
 if btn_pred:
-    response = requests.get('https://matdreamteam.azurewebsites.net/predict',
-                            headers=headers, json=data)
-    dict_data = response.json()
-    dict_data["input"] = user_input
-    st.write(dict_data)
-    add = requests.post('https://matdreamteam.azurewebsites.net/add', 
+   response = requests.get('https://matdreamteam.azurewebsites.net/predict',
+                           headers=headers, json=data)
+   dict_data = response.json()
+   dict_data["input"] = user_input
+   st.write(dict_data)
+    
+if btn_true :
+   dict_data["istrue"] = 1
+   add = requests.post('https://matdreamteam.azurewebsites.net/add', 
                         headers= headers, json = dict_data)
+
+if btn_false :
+   dict_data["istrue"] = 0
+   add
    
 if btn_del :
    delete = requests.post('https://matdreamteam.azurewebsites.net/del', 
