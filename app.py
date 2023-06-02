@@ -31,14 +31,14 @@ df = pd.DataFrame(requests.get('https://matdreamteam.azurewebsites.net',
 st.title("Sentiment analysis")
 st.subheader("The purpose here is to test an AI on a text who predict if the global sentiment is positive or negative")
 
-col10,col20 = st.columns([1,4])
+col10,col20 = st.columns([1,3.6])
 
 with col10 :
    
    user_input = st.text_input("Enter a sentence to analyse")
 
 
-col1,col2,col3,col4,col5 = st.columns([1.5,1,1,1,20])
+col1,col2,col3,col4,col5 = st.columns([1.5,1,1,1,16])
 
 
 with col1 :
@@ -126,33 +126,33 @@ right: 2rem;
 """
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
-st.markdown(
-"""
-<style>
-.square-set {
-  color: WHITE;
-  background: darkgrey;
-  height: 600px;
-  position: absolute;
-  border-radius: 15px;
-  font:  Helvetica ;
-  width: 400px;
-  top: 50px;
-  left:0px
+# st.markdown(
+# """
+# <style>
+# .square-set {
+#   color: WHITE;
+#   background: darkgrey;
+#   height: 600px;
+#   position: absolute;
+#   border-radius: 15px;
+#   font:  Helvetica ;
+#   width: 400px;
+#   top: 50px;
+#   left:0px
   
-}
-.square {
-  background: green;
-  height: 80px;
-  position: absolute;
-  width: 80px;
-  border-radius: 15px;
-  line-height: 60px;
-  top:1500px;
-  right:5px
-}
-</style>
+# }
+# .square {
+#   background: green;
+#   height: 80px;
+#   position: absolute;
+#   width: 80px;
+#   border-radius: 15px;
+#   line-height: 60px;
+#   top:1500px;
+#   right:5px
+# }
+# </style>
 
-<div class="square-set">
+# <div class="square-set">
 
-""", unsafe_allow_html= True)
+# """, unsafe_allow_html= True)
